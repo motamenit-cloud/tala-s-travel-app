@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Tala — luxury travel planning</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; background: #2A1F17;
+      font-family: "Outfit", -apple-system, system-ui, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    #stage {
+      width: 100%; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 35%, #3a2a1d 0%, #1a120c 75%);
+      position: relative;
+    }
+    /* paper grain over the stage */
+    #stage::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.85  0 0 0 0.04 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+      opacity: 0.6; pointer-events: none; mix-blend-mode: overlay;
+    }
+    /* tiny hint label */
+    .hint {
+      position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%);
+      font-family: "Outfit", sans-serif; font-size: 11px; letter-spacing: 0.32em;
+      text-transform: uppercase; color: rgba(244,234,221,0.5); z-index: 100;
+    }
+    .hint .sep { margin: 0 10px; opacity: 0.45; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div class="hint">tala &nbsp;✶&nbsp; an interactive prototype</div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- shared infra -->
+  <script type="text/babel" src="ios-frame.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+
+  <!-- design tokens, icons, data -->
+  <script type="text/babel" src="tokens.jsx"></script>
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="data.jsx"></script>
+
+  <!-- screens -->
+  <script type="text/babel" src="screens-onboarding.jsx"></script>
+  <script type="text/babel" src="screens-home.jsx"></script>
+  <script type="text/babel" src="screens-trip-board.jsx"></script>
+  <script type="text/babel" src="screens-ig-upload.jsx"></script>
+  <script type="text/babel" src="screens-generating.jsx"></script>
+  <script type="text/babel" src="screens-itinerary.jsx"></script>
+  <script type="text/babel" src="screens-day-detail.jsx"></script>
+  <script type="text/babel" src="screens-share.jsx"></script>
+
+  <!-- app -->
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "paletteAccent": "#C46A4A",
+      "evening": false,
+      "grain": true,
+      "deviceScale": 0.92,
+      "headlineFont": "playfair"
+    }/*EDITMODE-END*/;
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const [screen, setScreen] = React.useState('onboard'); // onboard | home | board | generating | itinerary | day
+      const [onboardStep, setOnboardStep] = React.useState(0);
+      const [addOpen, setAddOpen] = React.useState(false);
+      const [igStep, setIgStep] = React.useState(null); // null | 'analyzing' | 'confirm'
+      const [shareOpen, setShareOpen] = React.useState(false);
+      const [openDay, setOpenDay] = React.useState(2);
+      const [stageH, setStageH] = React.useState(window.innerHeight);
+
+      React.useEffect(() => {
+        const r = () => setStageH(window.innerHeight);
+        window.addEventListener('resize', r);
+        return () => window.removeEventListener('resize', r);
+      }, []);
+
+      const dark = t.evening;
+      const c = T(dark);
+
+      const advanceOnboard = () => {
+        if (onboardStep < 2) setOnboardStep(s => s + 1);
+        else { setScreen('home'); }
+      };
+      const skipOnboard = () => { setScreen('home'); };
+
+      // Derive scale to fit
+      const fitScale = Math.min(1, (stageH - 80) / 874) * t.deviceScale;
+
+      // Screen content rendered inside the iOS frame
+      let content;
+      if (screen === 'onboard') {
+        content = <Onboarding step={onboardStep} dark={dark} onAdvance={advanceOnboard} onSkip={skipOnboard}/>;
+      } else if (screen === 'home') {
+        content = <HomeScreen dark={dark} onOpenTrip={() => setScreen('board')} onNewTrip={() => setScreen('board')}/>;
+      } else if (screen === 'board') {
+        content = <TripBoard
+          dark={dark}
+          onBack={() => setScreen('home')}
+          onGenerate={() => setScreen('generating')}
+          onAddTrigger={() => setAddOpen(true)}
+          addOpen={addOpen}
+          onAddClose={() => setAddOpen(false)}
+          onUploadIG={() => { setAddOpen(false); setIgStep('analyzing'); }}
+        />;
+      } else if (screen === 'generating') {
+        content = <GeneratingScreen dark={dark} onComplete={() => setScreen('itinerary')}/>;
+      } else if (screen === 'itinerary') {
+        content = <ItineraryScreen
+          dark={dark}
+          onBack={() => setScreen('board')}
+          onOpenDay={(n) => { setOpenDay(n); setScreen('day'); }}
+          onShare={() => setShareOpen(true)}
+        />;
+      } else if (screen === 'day') {
+        content = <DayDetail dayN={openDay} dark={dark} onBack={() => setScreen('itinerary')}/>;
+      }
+
+      return (
+        <>
+          <div style={{
+            transform: `scale(${fitScale})`, transformOrigin: 'center center',
+          }}>
+            <IOSDevice dark={dark} width={402} height={874}>
+              <div style={{ position: 'relative', height: '100%', width: '100%', overflow: 'hidden' }}>
+                {content}
+                {/* IG upload modal — overlays everything */}
+                {igStep && (
+                  <IGUploadFlow
+                    dark={dark}
+                    step={igStep}
+                    onAdvance={() => setIgStep('confirm')}
+                    onClose={() => setIgStep(null)}
+                  />
+                )}
+                {/* Share sheet */}
+                {shareOpen && <ShareSheet dark={dark} onClose={() => setShareOpen(false)}/>}
+              </div>
+            </IOSDevice>
+          </div>
+
+          {/* Quick reset / nav helper — small unobtrusive buttons */}
+          <div style={{
+            position: 'fixed', top: 20, left: 20, display: 'flex', flexDirection: 'column', gap: 6,
+            fontFamily: 'Outfit, sans-serif', fontSize: 11, letterSpacing: '0.04em', zIndex: 100,
+          }}>
+            {[
+              ['onboard',    'Onboarding'],
+              ['home',       'Home'],
+              ['board',      'Trip board'],
+              ['generating', 'Generating'],
+              ['itinerary',  'Itinerary'],
+              ['day',        'Day detail'],
+            ].map(([k, lbl]) => (
+              <button key={k} onClick={() => { setScreen(k); if (k === 'onboard') setOnboardStep(0); }} style={{
+                background: screen === k ? 'rgba(196,106,74,0.92)' : 'rgba(244,234,221,0.06)',
+                color: screen === k ? '#FBF7F0' : 'rgba(244,234,221,0.55)',
+                border: `0.5px solid ${screen === k ? 'transparent' : 'rgba(244,234,221,0.1)'}`,
+                padding: '6px 10px', borderRadius: 99, cursor: 'pointer', fontSize: 10.5,
+                letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'inherit',
+                textAlign: 'left', minWidth: 110, fontWeight: 500,
+              }}>{lbl}</button>
+            ))}
+          </div>
+
+          <TweaksPanel title="Tala">
+            <TweakSection label="Mode"/>
+            <TweakRadio label="Time of day" value={t.evening ? 'evening' : 'day'}
+              options={[{ value: 'day', label: 'Daytime' }, { value: 'evening', label: 'Evening' }]}
+              onChange={(v) => setTweak('evening', v === 'evening')}/>
+            <TweakToggle label="Paper grain" value={t.grain} onChange={(v) => setTweak('grain', v)}/>
+
+            <TweakSection label="Aesthetic"/>
+            <TweakColor label="Accent" value={t.paletteAccent} onChange={(v) => setTweak('paletteAccent', v)}/>
+            <TweakRadio label="Headline" value={t.headlineFont}
+              options={[
+                { value: 'cormorant', label: 'Cormorant' },
+                { value: 'playfair',  label: 'Playfair' },
+                { value: 'serif',     label: 'System' },
+              ]}
+              onChange={(v) => setTweak('headlineFont', v)}/>
+
+            <TweakSection label="Stage"/>
+            <TweakSlider label="Device scale" value={Math.round(t.deviceScale * 100)} min={70} max={110} step={2} unit="%"
+              onChange={(v) => setTweak('deviceScale', v / 100)}/>
+
+            <TweakSection label="Quick jump"/>
+            <TweakButton label="Restart from onboarding" secondary onClick={() => { setScreen('onboard'); setOnboardStep(0); }}/>
+          </TweaksPanel>
+
+          {/* Apply tweak overrides via dynamic CSS */}
+          <style>{`
+            :root { --tala-accent: ${t.paletteAccent}; }
+            ${!t.grain ? `[style*="PAPER_GRAIN"], [style*="FILM_GRAIN"] { /* no-op selector */ }` : ''}
+            ${t.headlineFont === 'playfair' ? `
+              @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap');
+              [style*="Cormorant Garamond"] { font-family: "Playfair Display", Georgia, serif !important; }
+            ` : ''}
+            ${t.headlineFont === 'serif' ? `
+              [style*="Cormorant Garamond"] { font-family: Georgia, "Times New Roman", serif !important; }
+            ` : ''}
+          `}</style>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>
