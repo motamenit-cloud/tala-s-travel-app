@@ -40,7 +40,7 @@ const PHOTOS = {
   outfitNavy:    'https://is4.revolveassets.com/images/p4/n/z/LOVF-WD4924_V2.jpg',
   outfitRed:     'https://is4.revolveassets.com/images/p4/n/z/SPDW-WD2480_V2.jpg',
   outfitBlack:   'https://is4.revolveassets.com/images/p4/n/z/FAIB-WD805_V2.jpg',
-  outfitPink:    'https://images.unsplash.com/photo-1548690596-f1fdd8863da0?auto=format&fit=crop&w=400&q=70',
+  outfitPink:    'https://is4.revolveassets.com/images/p4/n/z/MOTO-WD980_V2.jpg',
 };
 
 const TRIPS = [
