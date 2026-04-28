@@ -37,7 +37,7 @@ const PHOTOS = {
   oneHotel:      'https://www.1hotels.com/sites/1hotels.com/files/styles/showcase/public/brandfolder/kkmmbmqpc8gmjtgffsgwnhw/RM655-01-_Ocean_Front_Kingh1320.webp?h=22f6ab40&itok=AKcdC7EP',
   // Outfit inspo
   outfitWhite:   'https://is4.revolveassets.com/images/p4/n/z/SUSA-WD2208_V2.jpg',
-  outfitNavy:    'https://images.unsplash.com/photo-1539281621506-6b64ef40f3e7?auto=format&fit=crop&w=400&q=70',
+  outfitNavy:    'https://is4.revolveassets.com/images/p4/n/z/LOVF-WD4924_V2.jpg',
   outfitRed:     'https://images.unsplash.com/photo-1544568100-847a948585b0?auto=format&fit=crop&w=400&q=70',
   outfitBlack:   'https://images.unsplash.com/photo-1565886557844-7c99dad47292?auto=format&fit=crop&w=400&q=70',
   outfitPink:    'https://images.unsplash.com/photo-1548690596-f1fdd8863da0?auto=format&fit=crop&w=400&q=70',
