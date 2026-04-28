@@ -32,7 +32,7 @@ const PHOTOS = {
   // Sexy Fish interior
   sexyFish:      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?auto=format&fit=crop&w=600&q=70',
   // F1 Miami hero
-  f1Miami:       'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=70',
+  f1Miami:       'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?auto=format&fit=crop&w=900&q=70',
   // Outfit inspo
   outfitWhite:   'https://images.unsplash.com/photo-1596777684687-1ea4a47af169?auto=format&fit=crop&w=400&q=70',
   outfitNavy:    'https://images.unsplash.com/photo-1595777707802-21b82d5e6d2d?auto=format&fit=crop&w=400&q=70',
