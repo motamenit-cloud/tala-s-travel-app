@@ -30,15 +30,15 @@ const PHOTOS = {
   // Insta upload preview (the "user's screenshot")
   instaPost:     'https://images.unsplash.com/photo-1535827841776-24afc1e255ac?auto=format&fit=crop&w=600&q=70',
   // Sexy Fish interior
-  sexyFish:      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?auto=format&fit=crop&w=600&q=70',
+  sexyFish:      'https://images.unsplash.com/photo-1565183938294-e5b1d1fb0253?auto=format&fit=crop&w=600&q=70',
   // F1 Miami hero
   f1Miami:       'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?auto=format&fit=crop&w=900&q=70',
   // Outfit inspo
-  outfitWhite:   'https://images.unsplash.com/photo-1596777684687-1ea4a47af169?auto=format&fit=crop&w=400&q=70',
-  outfitNavy:    'https://images.unsplash.com/photo-1595777707802-21b82d5e6d2d?auto=format&fit=crop&w=400&q=70',
-  outfitRed:     'https://images.unsplash.com/photo-1515622141207-5dda40dd6c69?auto=format&fit=crop&w=400&q=70',
-  outfitBlack:   'https://images.unsplash.com/photo-1572741694047-404d69884b27?auto=format&fit=crop&w=400&q=70',
-  outfitPink:    'https://images.unsplash.com/photo-1595948494031-fe6269cf51c7?auto=format&fit=crop&w=400&q=70',
+  outfitWhite:   'https://images.unsplash.com/photo-1495873333019-f41915591bb3?auto=format&fit=crop&w=400&q=70',
+  outfitNavy:    'https://images.unsplash.com/photo-1539281621506-6b64ef40f3e7?auto=format&fit=crop&w=400&q=70',
+  outfitRed:     'https://images.unsplash.com/photo-1544568100-847a948585b0?auto=format&fit=crop&w=400&q=70',
+  outfitBlack:   'https://images.unsplash.com/photo-1565886557844-7c99dad47292?auto=format&fit=crop&w=400&q=70',
+  outfitPink:    'https://images.unsplash.com/photo-1548690596-f1fdd8863da0?auto=format&fit=crop&w=400&q=70',
 };
 
 const TRIPS = [
