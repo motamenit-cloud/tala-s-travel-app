@@ -486,7 +486,7 @@ function LaunchSplash() {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Scene 4: Tala intake — "Planning a trip to Mallorca?"
+// Scene 4: Tala intake — "Planning a trip to Miami?"
 // ─────────────────────────────────────────────────────────────
 function TalaIntake({ c }) {
   return (
@@ -550,7 +550,7 @@ function TalaIntake({ c }) {
                 background: c.terra, color: '#fff', alignItems: 'center', justifyContent: 'center',
                 fontSize: 10, fontWeight: 600,
               }}>✓</span>
-              <span style={{ flex: 1 }}>Cala Varques · Mallorca</span>
+              <span style={{ flex: 1 }}>Miami Grand Prix Circuit</span>
               <span style={{ fontSize: 10, color: c.inkMute, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Detected</span>
             </div>
           </div>
@@ -570,8 +570,8 @@ function TalaIntake({ c }) {
           color: c.ink, fontStyle: 'italic', fontWeight: 400, letterSpacing: '-0.01em',
           animation: 'talaSlide 600ms ease-out 180ms both',
         }}>
-          Planning a trip to<br/>
-          <span style={{ color: c.terraDeep }}>Mallorca?</span>
+          Planning a trip for<br/>
+          <span style={{ color: c.terraDeep }}>F1 Miami?</span>
         </div>
 
         <div style={{
@@ -605,9 +605,9 @@ function TalaIntake({ c }) {
               Add to existing
             </div>
             <div style={{ fontFamily: FONTS.serif, fontSize: 18, fontStyle: 'italic', color: c.ink, lineHeight: 1.1 }}>
-              Balearics with the Girls
+              Miami F1 Grand Prix Weekend
             </div>
-            <div style={{ fontSize: 11, color: c.inkSoft, marginTop: 2 }}>Mallorca · Ibiza · Jun 12 — 22</div>
+            <div style={{ fontSize: 11, color: c.inkSoft, marginTop: 2 }}>Miami · May 2 — 5</div>
           </div>
           <svg width="8" height="14" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6" stroke={c.inkMute} strokeWidth="1.6" fill="none" strokeLinecap="round"/></svg>
         </div>
@@ -619,7 +619,7 @@ function TalaIntake({ c }) {
           fontFamily: FONTS.sans, fontSize: 14, letterSpacing: '0.28em',
           textTransform: 'uppercase', fontWeight: 500, cursor: 'pointer',
           boxShadow: '0 8px 22px -10px rgba(196,106,74,0.55)',
-        }}>Start a new trip · Mallorca</button>
+        }}>Start a new trip · Miami F1</button>
 
         <div style={{
           marginTop: 10, textAlign: 'center', fontSize: 11.5,

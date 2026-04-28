@@ -20,7 +20,7 @@ function TripBoard({ dark, onBack, onGenerate, onAddTrigger, addOpen, onAddClose
     <div style={{ background: c.bg, minHeight: '100%', fontFamily: FONTS.sans, position: 'relative', paddingBottom: 120 }}>
       {/* Header — mini hero */}
       <div style={{ position: 'relative', height: 220 }}>
-        <img src={PHOTOS.mallorcaHero} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+        <img src={PHOTOS.f1Miami} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: FILM_GRAIN, opacity: 0.4, mixBlendMode: 'overlay' }}/>
         <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(180deg, rgba(0,0,0,0.25) 0%, transparent 40%, ${c.bg} 100%)` }}/>
 
@@ -37,10 +37,10 @@ function TripBoard({ dark, onBack, onGenerate, onAddTrigger, addOpen, onAddClose
         {/* Title overlay */}
         <div style={{ position: 'absolute', left: 22, right: 22, bottom: -2, color: c.ink }}>
           <div style={{ fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase', color: c.terra, fontWeight: 500, marginBottom: 6 }}>
-            Mallorca · Ibiza
+            Miami
           </div>
           <div style={{ fontFamily: FONTS.serif, fontSize: 32, fontStyle: 'italic', lineHeight: 1.05, fontWeight: 400, letterSpacing: '-0.01em' }}>
-            Balearics with the Girls
+            Miami F1 Grand Prix Weekend
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ function TripBoard({ dark, onBack, onGenerate, onAddTrigger, addOpen, onAddClose
       {/* Meta row */}
       <div style={{ padding: '14px 22px 18px', display: 'flex', alignItems: 'center', gap: 12, color: c.inkSoft, fontSize: 12 }}>
         <IcCalendar size={14} stroke={c.inkSoft}/>
-        <span>Jun 12 — 22</span>
+        <span>May 2 — 5</span>
         <span style={{ width: 3, height: 3, borderRadius: 99, background: c.inkMute }}/>
         <IcUser size={14} stroke={c.inkSoft}/>
         <span>5 of you</span>
@@ -58,7 +58,7 @@ function TripBoard({ dark, onBack, onGenerate, onAddTrigger, addOpen, onAddClose
 
       {/* Tab bar */}
       <div style={{ display: 'flex', gap: 4, padding: '0 22px 14px', borderBottom: `0.5px solid ${c.line}` }}>
-        {['Board', 'Itinerary', 'Notes', 'Crew'].map((t, i) => (
+        {['Board', 'Itinerary', 'Notes', 'Outfits'].map((t, i) => (
           <div key={t} style={{
             padding: '8px 14px 12px', fontSize: 13, fontWeight: 500,
             color: i === 0 ? c.ink : c.inkMute,

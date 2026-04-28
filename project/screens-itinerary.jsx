@@ -6,10 +6,10 @@ function ItineraryScreen({ dark, onBack, onOpenDay, onShare }) {
   const total = COSTS.reduce((s, c) => s + c.amt, 0);
 
   return (
-    <div style={{ background: c.bg, minHeight: '100%', fontFamily: FONTS.sans, paddingBottom: 40 }}>
+    <div style={{ background: c.bg, minHeight: '100%', maxHeight: '100vh', overflow: 'auto', fontFamily: FONTS.sans, paddingBottom: 40 }}>
       {/* Folio cover */}
       <div style={{ position: 'relative', height: 380 }}>
-        <img src={PHOTOS.mallorcaHero} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+        <img src={PHOTOS.f1Miami} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: FILM_GRAIN, opacity: 0.4, mixBlendMode: 'overlay' }}/>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, rgba(27,20,16,0.65) 100%)' }}/>
 
@@ -44,13 +44,13 @@ function ItineraryScreen({ dark, onBack, onOpenDay, onShare }) {
         {/* Title block */}
         <div style={{ position: 'absolute', left: 28, right: 28, bottom: 28, color: '#FBF7F0', textAlign: 'center' }}>
           <div style={{ fontSize: 11, letterSpacing: '0.32em', opacity: 0.85, marginBottom: 14 }}>
-            10 DAYS · 5 GUESTS · LATE SPRING
+            4 DAYS · 5 GUESTS · MAY
           </div>
           <div style={{ fontFamily: FONTS.serif, fontSize: 32, fontStyle: 'italic', lineHeight: 1.1, fontWeight: 400, marginBottom: 16 }}>
-            Balearics with the Girls
+            Miami F1 Grand Prix Weekend
           </div>
           <div style={{ fontSize: 12, letterSpacing: '0.06em', opacity: 0.8 }}>
-            Mallorca · Ibiza · Jun 12 — 22, 2026
+            Miami · May 2 — 5, 2026
           </div>
         </div>
       </div>
@@ -64,9 +64,7 @@ function ItineraryScreen({ dark, onBack, onOpenDay, onShare }) {
           fontFamily: FONTS.serif, fontSize: 17, fontStyle: 'italic',
           color: c.inkSoft, lineHeight: 1.5, fontWeight: 400,
         }}>
-          "I built this around the things you saved most: long lunches, water you can see through, and one
-          night you'll want to remember. The first half is slow Mallorca; the second is Ibiza, but the
-          version locals keep for themselves. Everything's reservable from this folio."
+          "Your Miami F1 weekend is built for maximum impact: paddock access for the real racing action, curated dinners at the hottest spots (Mandolin, Sexy Fish), and the perfect balance of racing intensity and celebration. Four days to experience why F1 Miami is unmissable."
         </div>
         <div style={{ fontSize: 12, color: c.inkMute, marginTop: 14, letterSpacing: '0.04em' }}>
           — Curated for you · Updated 2 minutes ago
@@ -78,7 +76,7 @@ function ItineraryScreen({ dark, onBack, onOpenDay, onShare }) {
         {[
           { id: 'days',    lbl: 'Days' },
           { id: 'costs',   lbl: 'Costs' },
-          { id: 'packing', lbl: 'Packing' },
+          { id: 'packing', lbl: 'Outfit inspo' },
         ].map(t => (
           <div key={t.id} onClick={() => setTab(t.id)} style={{
             padding: '10px 14px 12px', fontSize: 13, fontWeight: 500, cursor: 'pointer',
@@ -219,49 +217,63 @@ function CostBreakdown({ c, total }) {
 }
 
 function PackingList({ c }) {
-  const [done, setDone] = React.useState({});
-  const toggle = (k) => setDone(d => ({ ...d, [k]: !d[k] }));
-  return (
-    <div style={{ padding: '20px 24px 24px' }}>
-      <div style={{ fontSize: 11, letterSpacing: '0.28em', color: c.terra, textTransform: 'uppercase', fontWeight: 500, marginBottom: 6 }}>
-        Tailored to Late spring · Mediterranean coast
-      </div>
-      <div style={{
-        fontFamily: FONTS.serif, fontSize: 26, fontStyle: 'italic',
-        color: c.ink, fontWeight: 400, marginBottom: 22,
-      }}>What to bring</div>
+  // Outfit inspo masonry grid
+  const [colA, colB] = React.useMemo(() => {
+    const a = [], b = [];
+    let ha = 0, hb = 0;
+    OUTFITS.forEach(o => {
+      if (ha <= hb) { a.push(o); ha += o.h + 12; }
+      else { b.push(o); hb += o.h + 12; }
+    });
+    return [a, b];
+  }, []);
 
-      {PACKING.map((sec, si) => (
-        <div key={si} style={{ marginBottom: 26 }}>
-          <div style={{ fontSize: 12, color: c.inkMute, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 500, marginBottom: 12 }}>
-            ── {sec.sec}
-          </div>
-          {sec.items.map((it, ii) => {
-            const k = `${si}-${ii}`;
-            const isDone = done[k];
-            return (
-              <div key={ii} onClick={() => toggle(k)} style={{
-                display: 'flex', alignItems: 'center', gap: 12,
-                padding: '11px 0', borderBottom: `0.5px solid ${c.lineSoft}`, cursor: 'pointer',
-              }}>
-                <div style={{
-                  width: 22, height: 22, borderRadius: 6,
-                  border: `1.5px solid ${isDone ? c.terra : c.line}`,
-                  background: isDone ? c.terra : 'transparent',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                }}>
-                  {isDone && <IcCheck size={14} stroke="#FBF7F0" sw={2.6}/>}
-                </div>
-                <span style={{
-                  fontSize: 15, color: isDone ? c.inkMute : c.ink,
-                  textDecoration: isDone ? 'line-through' : 'none',
-                  textDecorationColor: c.inkMute,
-                }}>{it}</span>
-              </div>
-            );
-          })}
+  return (
+    <div style={{ padding: '20px 0 24px', background: c.bg }}>
+      <div style={{ padding: '0 24px', marginBottom: 22 }}>
+        <div style={{ fontSize: 11, letterSpacing: '0.28em', color: c.terra, textTransform: 'uppercase', fontWeight: 500, marginBottom: 6 }}>
+          Dress codes · Paddock to Dinner
         </div>
-      ))}
+        <div style={{
+          fontFamily: FONTS.serif, fontSize: 26, fontStyle: 'italic',
+          color: c.ink, fontWeight: 400,
+        }}>Outfit inspo</div>
+      </div>
+
+      <div style={{ display: 'flex', gap: 10, padding: '0 12px' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {colA.map(o => (
+            <div key={o.id} style={{
+              borderRadius: 14, overflow: 'hidden', position: 'relative',
+              background: c.surface, height: o.h,
+            }}>
+              <img src={o.src} alt={o.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: FILM_GRAIN, opacity: 0.3, mixBlendMode: 'overlay' }}/>
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0,
+                background: 'linear-gradient(180deg, transparent, rgba(0,0,0,0.6))',
+                padding: 12, color: '#FBF7F0', fontSize: 13, fontWeight: 500,
+              }}>{o.title}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {colB.map(o => (
+            <div key={o.id} style={{
+              borderRadius: 14, overflow: 'hidden', position: 'relative',
+              background: c.surface, height: o.h,
+            }}>
+              <img src={o.src} alt={o.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: FILM_GRAIN, opacity: 0.3, mixBlendMode: 'overlay' }}/>
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0,
+                background: 'linear-gradient(180deg, transparent, rgba(0,0,0,0.6))',
+                padding: 12, color: '#FBF7F0', fontSize: 13, fontWeight: 500,
+              }}>{o.title}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

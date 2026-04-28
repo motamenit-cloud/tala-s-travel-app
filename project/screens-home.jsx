@@ -39,7 +39,7 @@ function HomeScreen({ dark, onOpenTrip, onNewTrip }) {
           height: 380, cursor: 'pointer',
           boxShadow: '0 12px 30px rgba(42,31,23,0.18)',
         }}>
-          <img src={PHOTOS.mallorcaHero} style={{
+          <img src={PHOTOS.f1Miami} style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%',
             objectFit: 'cover',
           }} alt=""/>
@@ -64,19 +64,19 @@ function HomeScreen({ dark, onOpenTrip, onNewTrip }) {
           {/* Bottom content */}
           <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 22, color: '#FBF7F0' }}>
             <div style={{ fontSize: 11, letterSpacing: '0.28em', opacity: 0.9, textTransform: 'uppercase', marginBottom: 8 }}>
-              Mallorca · Ibiza
+              Miami
             </div>
             <div style={{
               fontFamily: FONTS.serif, fontSize: 32, lineHeight: 1.05,
               fontStyle: 'italic', fontWeight: 400, marginBottom: 12, letterSpacing: '-0.01em',
             }}>
-              Balearics with the Girls
+              Miami F1 Grand Prix Weekend
             </div>
             <div style={{
               display: 'flex', alignItems: 'center', gap: 14, fontSize: 12,
               opacity: 0.92, fontWeight: 300, letterSpacing: '0.04em',
             }}>
-              <span>Jun 12 — 22, 2026</span>
+              <span>May 2 — 5, 2026</span>
               <span style={{ width: 3, height: 3, borderRadius: 99, background: 'rgba(255,255,255,0.6)' }}/>
               <span>5 friends</span>
               <span style={{ width: 3, height: 3, borderRadius: 99, background: 'rgba(255,255,255,0.6)' }}/>

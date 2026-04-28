@@ -49,7 +49,7 @@ function ShareSheet({ dark, onClose }) {
                 fontSize: 7, letterSpacing: '0.3em', textTransform: 'uppercase', textAlign: 'center', padding: 4,
               }}>
                 <div style={{ opacity: 0.8 }}>✶ TALA ✶</div>
-                <div style={{ fontFamily: FONTS.serif, fontStyle: 'italic', fontSize: 9, marginTop: 4 }}>Balearics</div>
+                <div style={{ fontFamily: FONTS.serif, fontStyle: 'italic', fontSize: 9, marginTop: 4 }}>Miami F1</div>
               </div>
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
@@ -59,8 +59,8 @@ function ShareSheet({ dark, onClose }) {
               <div style={{
                 fontFamily: FONTS.serif, fontSize: 18, fontStyle: 'italic',
                 color: c.ink, fontWeight: 400, lineHeight: 1.15, marginBottom: 4,
-              }}>Balearics with the Girls</div>
-              <div style={{ fontSize: 11, color: c.inkMute }}>10 days · 5 guests · €18,130</div>
+              }}>Miami F1 Grand Prix Weekend</div>
+              <div style={{ fontSize: 11, color: c.inkMute }}>4 days · 5 guests · €17,000</div>
             </div>
           </div>
         </div>
