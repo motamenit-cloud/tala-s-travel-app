@@ -30,11 +30,11 @@ const PHOTOS = {
   // Insta upload preview (the "user's screenshot")
   instaPost:     'https://images.unsplash.com/photo-1535827841776-24afc1e255ac?auto=format&fit=crop&w=600&q=70',
   // Sexy Fish interior
-  sexyFish:      'https://images.unsplash.com/photo-1565183938294-e5b1d1fb0253?auto=format&fit=crop&w=600&q=70',
+  sexyFish:      'https://whitewall.art/wp-content/uploads/elementor/thumbs/khaydenmbdssexyfishmiamiladysroom1-pc-ken-hayden-qfjtucix07mw01ucnut6rpkx0rfr6hatadbyihge2k.jpg',
   // F1 Miami hero
   f1Miami:       'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?auto=format&fit=crop&w=900&q=70',
   // Outfit inspo
-  outfitWhite:   'https://images.unsplash.com/photo-1495873333019-f41915591bb3?auto=format&fit=crop&w=400&q=70',
+  outfitWhite:   'https://is4.revolveassets.com/images/p4/n/z/SUSA-WD2208_V2.jpg',
   outfitNavy:    'https://images.unsplash.com/photo-1539281621506-6b64ef40f3e7?auto=format&fit=crop&w=400&q=70',
   outfitRed:     'https://images.unsplash.com/photo-1544568100-847a948585b0?auto=format&fit=crop&w=400&q=70',
   outfitBlack:   'https://images.unsplash.com/photo-1565886557844-7c99dad47292?auto=format&fit=crop&w=400&q=70',
