@@ -32,7 +32,7 @@ const PHOTOS = {
   // Sexy Fish interior
   sexyFish:      'https://whitewall.art/wp-content/uploads/elementor/thumbs/khaydenmbdssexyfishmiamiladysroom1-pc-ken-hayden-qfjtucix07mw01ucnut6rpkx0rfr6hatadbyihge2k.jpg',
   // F1 Miami hero
-  f1Miami:       'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?auto=format&fit=crop&w=900&q=70',
+  f1Miami:       'https://substackcdn.com/image/fetch/$s_!kNGw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2e15813-c82c-40bc-b69e-56df4c193668_1600x1027.png',
   // One Hotel
   oneHotel:      'https://www.1hotels.com/sites/1hotels.com/files/styles/showcase/public/brandfolder/kkmmbmqpc8gmjtgffsgwnhw/RM655-01-_Ocean_Front_Kingh1320.webp?h=22f6ab40&itok=AKcdC7EP',
   // Outfit inspo
