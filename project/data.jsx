@@ -39,7 +39,7 @@ const PHOTOS = {
   outfitWhite:   'https://is4.revolveassets.com/images/p4/n/z/SUSA-WD2208_V2.jpg',
   outfitNavy:    'https://is4.revolveassets.com/images/p4/n/z/LOVF-WD4924_V2.jpg',
   outfitRed:     'https://is4.revolveassets.com/images/p4/n/z/SPDW-WD2480_V2.jpg',
-  outfitBlack:   'https://images.unsplash.com/photo-1565886557844-7c99dad47292?auto=format&fit=crop&w=400&q=70',
+  outfitBlack:   'https://is4.revolveassets.com/images/p4/n/z/FAIB-WD805_V2.jpg',
   outfitPink:    'https://images.unsplash.com/photo-1548690596-f1fdd8863da0?auto=format&fit=crop&w=400&q=70',
 };
 
