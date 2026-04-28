@@ -33,6 +33,8 @@ const PHOTOS = {
   sexyFish:      'https://whitewall.art/wp-content/uploads/elementor/thumbs/khaydenmbdssexyfishmiamiladysroom1-pc-ken-hayden-qfjtucix07mw01ucnut6rpkx0rfr6hatadbyihge2k.jpg',
   // F1 Miami hero
   f1Miami:       'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?auto=format&fit=crop&w=900&q=70',
+  // One Hotel
+  oneHotel:      'https://www.1hotels.com/sites/1hotels.com/files/styles/showcase/public/brandfolder/kkmmbmqpc8gmjtgffsgwnhw/RM655-01-_Ocean_Front_Kingh1320.webp?h=22f6ab40&itok=AKcdC7EP',
   // Outfit inspo
   outfitWhite:   'https://is4.revolveassets.com/images/p4/n/z/SUSA-WD2208_V2.jpg',
   outfitNavy:    'https://images.unsplash.com/photo-1539281621506-6b64ef40f3e7?auto=format&fit=crop&w=400&q=70',
@@ -87,7 +89,7 @@ const TRIPS = [
 // Mood board pins for Miami F1
 const PINS = [
   { id: 'p1', kind: 'link',  text: 'Mandolin — Mediterranean', sub: 'mandolinmiami.com', h: 130 },
-  { id: 'p2', kind: 'image', src: PHOTOS.cala,        h: 280, tag: 'One Hotel - Miami Beach',   confirmed: true  },
+  { id: 'p2', kind: 'image', src: PHOTOS.oneHotel,    h: 280, tag: 'One Hotel - Miami Beach',   confirmed: true  },
   { id: 'p3', kind: 'note',  text: 'VIP access to F1 paddock with police escort', h: 150 },
   { id: 'p4', kind: 'image', src: PHOTOS.sexyFish,    h: 200, tag: 'Sexy Fish — Cocktails',    confirmed: true  },
   { id: 'p5', kind: 'image', src: PHOTOS.beachClub,   h: 260, tag: 'Juvia — Rooftop Dining',    confirmed: true  },
